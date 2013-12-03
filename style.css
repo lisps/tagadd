@@ -1,0 +1,24 @@
+/**
+ * DokuWiki Plugin TagAdd (CSS Component) 
+ *
+ * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @author lisps
+ */
+label.tagadd {
+    display:block;
+}
+
+#tagadd__dialog.loading {
+
+    min-height:12px;
+    min-width:150px;
+    
+    text-align:left;
+    vertical-align:center;
+    background-image: url('./../../images/loading.gif');
+    background-repeat:no-repeat;
+    opacity: 1;
+}
+#tagadd__dialog.loading * {
+    opacity: .1;
+}

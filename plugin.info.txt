@@ -1,0 +1,7 @@
+base    tagadd
+author  lisps
+email   
+date    2013-12-03
+name    TagAdd
+desc    easy ajax-adding for tags
+url     http://dokuwiki.org/plugin:tagadd

@@ -1,4 +1,9 @@
-tagadd
-======
+====== Tagadd Plugin for DokuWiki ======
 
-Dokuwiki Plugin
+All documentation for the Tagadd Plugin is available online at:
+
+  * http://dokuwiki.org/plugin:tagadd
+
+(c) 2013 by lisps
+
+See LICENSE for license info.
