@@ -46,6 +46,8 @@ function tagadd__submitFormTagsDone(data){
  * @param string ns namespace 
  **/
 function tagadd__loadForm(ns){
+	if(!(JSINFO && JSINFO['acl_write'] === '1')) return;
+	
     if (TAGADD__loadActive) return ;
     TAGADD__loadActive = true;
 
@@ -93,8 +95,8 @@ function tagadd__submitLoadFormDone(data){
 jQuery(document).ready(function() {
     if(JSINFO && JSINFO['act'] === 'show') {
         jQuery(document).keypress(function(e) {
-            if (e.ctrlKey && e.which == 113) {
-              tagadd__loadForm(JSINFO['currentNamespace']);
+            if ((e.ctrlKey && (e.keyCode || e.which == 113)) || (e.ctrlKey && (e.keyCode || e.which == 17))) {
+			  tagadd__loadForm(JSINFO['currentNamespace']);
             }
         });
     }

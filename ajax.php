@@ -38,10 +38,12 @@ if($action === 'saveTags') {
 
 //Action LoadForm
 if($action === 'loadForm') {
-    global $ID;
-    $ns=trim($_POST['ns']);
-    $form = createForm($ID,$ns);
-    $Hajax->success(array('form'=>$form));
+	global $ID;
+	global $INPUT;
+	$ns = $INPUT->str('ns');
+
+	$form = createForm($ID,$ns);
+	$Hajax->success(array('form'=>$form));
 }
 
 /*
