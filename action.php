@@ -23,6 +23,7 @@ class action_plugin_tagadd extends DokuWiki_Action_Plugin
     function _addjs(&$event, $param) {
         global $ID;
         global $JSINFO;
+        global $ACT;
 		
 		$perm = auth_quickaclcheck($ID);
 		if ($perm > AUTH_READ)
@@ -32,6 +33,11 @@ class action_plugin_tagadd extends DokuWiki_Action_Plugin
         if(!isset($JSINFO['act'])) {
             $JSINFO['act'] = $ACT;
         }
+        
+        $JSINFO['tagadd_altKey'] = $this->getConf('altKey');
+        $JSINFO['tagadd_ctrlKey'] = $this->getConf('ctrlKey');
+        $JSINFO['tagadd_keyCode'] = array_map('trim',explode(',',$this->getConf('keyCode')));
+        
     }
 
 }

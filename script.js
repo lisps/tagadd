@@ -95,8 +95,19 @@ function tagadd__submitLoadFormDone(data){
 jQuery(document).ready(function() {
     if(JSINFO && JSINFO['act'] === 'show') {
         jQuery(document).keypress(function(e) {
-            if ((e.ctrlKey && (e.keyCode || e.which == 113)) || (e.ctrlKey && (e.keyCode || e.which == 17))) {
-			  tagadd__loadForm(JSINFO['currentNamespace']);
+        	var code = (e.keyCode ? e.keyCode : e.which) + '';
+        	if(console) console.log('KEY CODE',code);
+        	var conf_code = JSINFO['tagadd_keyCode']; //array
+        	var conf_ctrl = JSINFO['tagadd_ctrlKey'];
+        	var conf_alt  = JSINFO['tagadd_altKey'];
+
+        	var ctrlKey = conf_ctrl ? e.ctrlKey : 1;
+        	var altKey  = conf_alt  ? e.altKey  : 1;
+
+        	var keyCode = (jQuery.inArray(code,conf_code) > -1);
+
+            if (ctrlKey && altKey && keyCode) {
+            	tagadd__loadForm(JSINFO['currentNamespace']);
             }
         });
     }
