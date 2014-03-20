@@ -28,6 +28,10 @@ class action_plugin_tagadd extends DokuWiki_Action_Plugin
 		if ($perm > AUTH_READ)
 			$JSINFO['acl_write'] = '1';
         $JSINFO['currentNamespace'] = (($ns = getNS($ID))?$ns:'');
+        
+        if(!isset($JSINFO['act'])) {
+            $JSINFO['act'] = $ACT;
+        }
     }
 
 }
