@@ -1,7 +1,7 @@
 base    tagadd
-author  lisps
-email   
-date    2013-12-03
+author  lisps, peterfromearth
+email   coder@peterfromearth.de
+date    2018-10-10
 name    TagAdd
 desc    easy ajax-adding for tags
 url     http://dokuwiki.org/plugin:tagadd

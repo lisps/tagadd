@@ -94,15 +94,14 @@ function tagadd__submitLoadFormDone(data){
 //add Shortcut
 jQuery(document).ready(function() {
     if(JSINFO && JSINFO['act'] === 'show') {
-        
-        jQuery('a.action.tagadd').click(function(){
+        jQuery('li.plugin_tagadd__addtags').click(function(){
             tagadd__loadForm(JSINFO['currentNamespace']);
             return false;
         });
 
         jQuery(document).keypress(function(e) {
         	var code = (e.keyCode ? e.keyCode : e.which) + '';
-        	if(console) console.log('KEY CODE',code);
+
         	var conf_code = JSINFO['tagadd_keyCode']; //array
         	var conf_ctrl = JSINFO['tagadd_ctrlKey'];
         	var conf_alt  = JSINFO['tagadd_altKey'];
@@ -111,7 +110,6 @@ jQuery(document).ready(function() {
         	var altKey  = conf_alt  ? e.altKey  : 1;
 
         	var keyCode = (jQuery.inArray(code,conf_code) > -1);
-
             if (ctrlKey && altKey && keyCode) {
             	tagadd__loadForm(JSINFO['currentNamespace']);
             }

@@ -19,10 +19,13 @@ class action_plugin_tagadd extends DokuWiki_Action_Plugin
 
     function register(Doku_Event_Handler $controller) {
         $controller->register_hook('DOKUWIKI_STARTED', 'AFTER',  $this, '_addjs');
-		$controller->register_hook('TEMPLATE_PAGETOOLS_DISPLAY', 'BEFORE', $this, '_addbutton');
+        if($this->getConf('showPagetoolBtn')) {
+    		$controller->register_hook('TEMPLATE_PAGETOOLS_DISPLAY', 'BEFORE', $this, '_addbutton');
+    		$controller->register_hook('MENU_ITEMS_ASSEMBLY', 'AFTER', $this, 'addsvgbutton');
+        }
     }
     
-    function _addjs(&$event, $param) {
+    function _addjs(Doku_Event $event, $param) {
         global $ID;
         global $JSINFO;
         global $ACT;
@@ -42,14 +45,23 @@ class action_plugin_tagadd extends DokuWiki_Action_Plugin
         
     }
     
-    function _addbutton(&$event) {
+    function _addbutton(Doku_Event $event) {
 		global $ID;
-		
+
         $perm = auth_quickaclcheck($ID);
 		if ($perm > AUTH_READ) {
-			$event->data['items'][] = '<li>' . tpl_link(wl($ID), '<span>'.$this->getLang('addTagButton').'</span>',
-												'class="action tagadd" title="'.$this->getLang('addTagButton').'"', 1) . '</li>';
+			$event->data['items'][] = '<li class="plugin_tagadd__addtags">' . tpl_link(wl($ID), '<span>'.$this->getLang('btn_addTagButton').'</span>',
+												'class="action tagadd" title="'.$this->getLang('btn_addTagButton').'"', 1) . '</li>';
 		}
 	}
+	
+
+	public function addsvgbutton(Doku_Event $event) {
+	    if($event->data['view'] != 'page') return;
+	    $event->data['items'][] = new \dokuwiki\plugin\tagadd\MenuItem();
+	}
+	
+	
 
 }
+
