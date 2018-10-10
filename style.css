@@ -22,3 +22,23 @@ label.tagadd {
 #tagadd__dialog.loading * {
     opacity: .1;
 }
+
+#dokuwiki__pagetools ul li a.action.tagadd::before {
+	content: url(images/tagadd.png);
+}
+
+#dokuwiki__pagetools:hover ul li a.action.tagadd,
+#dokuwiki__pagetools ul li a.action.tagadd:focus,
+#dokuwiki__pagetools ul li a.action.tagadd:active {
+	background-image: url(images/tagadd.png);
+	
+	&::before {
+    	content: none;
+	}
+}
+
+#dokuwiki__pagetools ul li a.action.tagadd:hover,
+#dokuwiki__pagetools ul li a.action.tagadd:active,
+#dokuwiki__pagetools ul li a.action.tagadd:focus {
+	background-position: right -30px;
+}

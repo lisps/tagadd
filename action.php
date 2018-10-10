@@ -19,7 +19,9 @@ class action_plugin_tagadd extends DokuWiki_Action_Plugin
 
     function register(Doku_Event_Handler $controller) {
         $controller->register_hook('DOKUWIKI_STARTED', 'AFTER',  $this, '_addjs');
+		$controller->register_hook('TEMPLATE_PAGETOOLS_DISPLAY', 'BEFORE', $this, '_addbutton');
     }
+    
     function _addjs(&$event, $param) {
         global $ID;
         global $JSINFO;
@@ -39,5 +41,15 @@ class action_plugin_tagadd extends DokuWiki_Action_Plugin
         $JSINFO['tagadd_keyCode'] = array_map('trim',explode(',',$this->getConf('keyCode')));
         
     }
+    
+    function _addbutton(&$event) {
+		global $ID;
+		
+        $perm = auth_quickaclcheck($ID);
+		if ($perm > AUTH_READ) {
+			$event->data['items'][] = '<li>' . tpl_link(wl($ID), '<span>'.$this->getLang('addTagButton').'</span>',
+												'class="action tagadd" title="'.$this->getLang('addTagButton').'"', 1) . '</li>';
+		}
+	}
 
 }

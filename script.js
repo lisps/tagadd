@@ -94,6 +94,12 @@ function tagadd__submitLoadFormDone(data){
 //add Shortcut
 jQuery(document).ready(function() {
     if(JSINFO && JSINFO['act'] === 'show') {
+        
+        jQuery('a.action.tagadd').click(function(){
+            tagadd__loadForm(JSINFO['currentNamespace']);
+            return false;
+        });
+
         jQuery(document).keypress(function(e) {
         	var code = (e.keyCode ? e.keyCode : e.which) + '';
         	if(console) console.log('KEY CODE',code);
