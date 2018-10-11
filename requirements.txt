@@ -1,0 +1,3 @@
+https://github.com/lisps/ajaxedit.git    lib/plugins/ajaxedit
+https://github.com/lisps/tagfilter.git    lib/plugins/tagfilter
+https://github.com/dokufreaks/plugin-tag.git  lib/plugins/tag

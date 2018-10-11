@@ -15,7 +15,7 @@ var TAGADD__loadActive = false;
  **/
 function tagadd__ajax_submitFormTags()
 {
-      ajaxedit_send('tagadd',false,tagadd__submitFormTagsDone,{
+      ajaxedit_send2('tagadd',false,tagadd__submitFormTagsDone,{
           form:jQuery('#tagadd__form').serializeArray(),
           action:'saveTags',
       });
@@ -64,7 +64,7 @@ function tagadd__loadForm(ns){
             });
     }
     jQuery('#tagadd__dialog').addClass('loading');
-    ajaxedit_send('tagadd',false,tagadd__submitLoadFormDone,{
+    ajaxedit_send2('tagadd',false,tagadd__submitLoadFormDone,{
         action:'loadForm',
         ns:ns,
         from:jQuery('#tagadd__form').serializeArray(),

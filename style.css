@@ -15,7 +15,7 @@ label.tagadd {
     
     text-align:left;
     vertical-align:center;
-    background-image: url('./../../images/loading.gif');
+    background-image: url('./../../plugins/tagadd/images/loading.gif');
     background-repeat:no-repeat;
     opacity: 1;
 }
