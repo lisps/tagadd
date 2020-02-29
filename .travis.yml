@@ -23,4 +23,4 @@ before_install: wget https://raw.github.com/splitbrain/dokuwiki-travis/master/tr
 install: sh travis.sh
 script: 
   - cd _test
-  - phpunit --group plugin_tagadd
+  - ./phpunit.phar --group plugin_tagadd
