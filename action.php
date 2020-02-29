@@ -224,7 +224,8 @@ class action_plugin_tagadd extends DokuWiki_Action_Plugin
 	    $siteTags_cat = $this->categorysizeTags($siteTags);
 	    
 	    foreach($nsTags_cat as $category=>$tags) {
-	        $form->_content[]='<h3><a href="#">'.$category.' ('.count($siteTags_cat[$category]).'/'.count($tags).')</a></h3><div>';
+	        $catTagsCount = array_key_exists($category, $siteTags_cat) ? count($siteTags_cat[$category]) : '0';
+	        $form->_content[]='<h3><a href="#">'.$category.' ('.$catTagsCount.'/'.count($tags).')</a></h3><div>';
 	        foreach($tags as $tag){
 	            $chk_attrs=array();
 	            
